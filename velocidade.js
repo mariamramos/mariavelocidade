@@ -1,12 +1,20 @@
-const form=document.querySelector("form")
-const resp1=document.querySelector("h3")
-const resp2=document.querySelector("h4")
+const form = document.querySelector("form")
+const resp = document.querySelector("h3")
 
 form.addEventListener("submit", (e) =>{
     e.preventDefault()
 
-    const velocidade1 = Number (form.inVelocidade1.value)
-    const velocidade2 = Number (form.inVelocidade2.value)
-    const media = (velocidade1 + velocidade2)/2
-    resp1.innerText = `Velocidade verificada ${media.toFixed(2)}`
+    const permitida = Number (form.inPermitida.value)
+    const condutor = Number (form.inCondutor.value)
+    let leve = permitida + (permitida * 0.2)
 
+    if(condutor <= permitida){
+        resp.innerText = `Situação: Sem Multa`
+
+    } else if(condutor <= leve) {
+        resp.innerText = `Situação: Multa leve`
+
+    } else {
+        resp.innerText = `Situação: Multa grave`
+    }
+})
